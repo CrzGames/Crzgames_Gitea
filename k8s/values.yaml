@@ -78,11 +78,10 @@ gitea:
       SSH_PORT: 22             # port public affiché dans l'UI
       START_SSH_SERVER: true
 
+      LFS_START_SERVER: true
+
     security:
       INSTALL_LOCK: true
-
-    lfs:
-      START_SERVER: true
 
     storage:
       STORAGE_TYPE: "minio"                 # Gitea utilise "minio" pour du S3-compatible
