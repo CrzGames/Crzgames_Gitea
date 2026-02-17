@@ -244,7 +244,7 @@ Si les `.uasset`, `.umap`, etc. apparaissent → LFS fonctionne correctement.
 ### Cas 1 — LFS installé AVANT le clone (meilleur cas)
 ```bash
 git lfs install
-git clone https://github.com/CrzGames/AetherRoyale-GameClient.git
+git clone git@github.com:CrzGames/AetherRoyale_GameClient.git
 ```
 👉 Résultat : <br />
 - Les fichiers LFS sont téléchargés automatiquement pendant le clone
@@ -253,7 +253,7 @@ git clone https://github.com/CrzGames/AetherRoyale-GameClient.git
 
 ### Cas 2 — LFS installé APRÈS le clone
 ```bash
-git clone https://github.com/CrzGames/AetherRoyale-GameClient.git
+git clone git@github.com:CrzGames/AetherRoyale_GameClient.git
 cd AetherRoyale-Client
 git lfs install
 git lfs pull
