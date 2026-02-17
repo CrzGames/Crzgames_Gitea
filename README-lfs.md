@@ -26,6 +26,8 @@ brew install git-lfs
 sudo apt install git-lfs
 ```
 
+<br />
+
 ### Activer Git LFS (à faire une seule fois par machine)
 
 ```bash
