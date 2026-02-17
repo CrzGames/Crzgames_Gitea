@@ -34,7 +34,11 @@ git lfs install
 
 Cette commande configure Git pour utiliser LFS globalement.
 
+<br /><br />
+
 ---
+
+<br /><br />
 
 ## 📁 Ajouter la config LFS externe dans le repo GitHub
 
@@ -48,12 +52,16 @@ Avec :
 
 ```ini
 [lfs]
-url = https://gitea.crzgames.com/CrzGames/AetherRoyale-Client.git/info/lfs
+url = https://gitea.crzgames.com/CrzGamesOrga/AetherRoyale-Client.git/info/lfs
 ```
 
 Ce fichier indique à Git d’envoyer les fichiers LFS vers Gitea au lieu de GitHub.
 
+<br /><br />
+
 ---
+
+<br /><br />
 
 ## 🎮 Tracker les fichiers Unreal
 
@@ -72,7 +80,11 @@ Cela va créer/modifier automatiquement :
 .gitattributes
 ```
 
+<br /><br />
+
 ---
+
+<br /><br />
 
 ## 💾 Commit de la configuration
 
@@ -82,7 +94,11 @@ git commit -m "Configure external LFS via Gitea"
 git push
 ```
 
+<br /><br />
+
 ---
+
+<br /><br />
 
 ## 🔐 Première authentification Gitea
 
@@ -171,7 +187,11 @@ Password:
 
 → colle le PAT
 
+<br /><br />
+
 ---
+
+<br /><br />
 
 ## 📡 Ce qui se passe ensuite
 
@@ -198,7 +218,11 @@ Gitea   -> serveur LFS
 OVH S3  -> stockage réel
 ```
 
+<br /><br />
+
 ---
+
+<br /><br />
 
 ## ⚠️ Important pour les autres développeurs
 
@@ -213,7 +237,11 @@ Sinon :
 * les assets Unreal ne seront pas téléchargés correctement
 * ils verront des fichiers texte au lieu des vrais fichiers
 
+<br /><br />
+
 ---
+
+<br /><br />
 
 ## 🔎 Vérifier que ça fonctionne
 
@@ -223,7 +251,11 @@ git lfs ls-files
 
 Si les `.uasset`, `.umap`, etc. apparaissent → LFS fonctionne correctement.
 
+<br /><br />
+
 ---
+
+<br /><br />
 
 ## 💡 Si des assets ont déjà été commit AVANT LFS
 
