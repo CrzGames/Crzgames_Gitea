@@ -67,6 +67,14 @@ valkey:
   enabled: true
 
 gitea:
+  # Désactive l'admin par défaut, on le créera à la main, sinon à chaque redéploiement il 
+  # voudras recréer l'admin et échouera à cause de l'admin déjà présent.
+  admin:
+      existingSecret:
+      username: ""
+      password: ""
+      email: ""
+      passwordMode: initialOnlyNoReset
   config:
     server:
       DOMAIN: "gitea.crzgames.com"
