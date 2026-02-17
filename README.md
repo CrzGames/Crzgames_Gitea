@@ -1,13 +1,13 @@
 # Crzgames – Gitea (Kubernetes) – Serveur LFS pour GitHub
 
-Ce projet permet de déployer **Gitea sur Kubernetes** afin de l’utiliser **uniquement comme serveur Git LFS**, tout en continuant à utiliser **GitHub comme forge principale** (code, PR, Issues, CI/CD).
+Ce projet permet de déployer **Gitea sur Kubernetes** afin de l’utiliser **uniquement comme Proxy Git LFS**, tout en continuant à utiliser **GitHub comme forge principale** (code, PR, Issues, CI/CD).
 
 L’objectif est de séparer clairement :
 
 ```
 GitHub → code source
 Gitea → endpoint LFS
-OVH S3 → stockage réel des fichiers lourds
+OVH S3 → stockage réel des fichiers LFS
 ```
 
 Cela permet :
@@ -56,8 +56,6 @@ Il n’y a volontairement que 2 fichiers :
 
 * `values.yaml` → configuration Helm Gitea
 * `secret-s3.yaml` → credentials OVH S3
-
-Le namespace est créé automatiquement par Helm.
 
 <br /><br />
 
