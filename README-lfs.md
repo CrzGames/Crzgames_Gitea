@@ -195,6 +195,47 @@ Password:
 
 <br /><br />
 
+## 🔑 Éviter de retaper le login Gitea à chaque fois (recommandé)
+
+Lors du premier `git lfs pull` ou `git push`, Git va demander :
+
+```
+Username:
+Password:
+```
+
+Si tu utilises un PAT, tu devras le retaper à chaque fois… sauf si tu actives le stockage des credentials.
+
+### Activer le stockage automatique (une seule fois par machine)
+
+```bash
+git config --global credential.helper store
+```
+
+Ensuite :
+
+* Fais un `git lfs pull` ou `git push`
+* Entre :
+
+```
+Username : ton user Gitea
+Password : ton PAT
+```
+
+Git va enregistrer ces informations dans :
+
+```
+~/.git-credentials
+```
+
+👉 Après ça, plus jamais de demande de login pour Gitea.
+
+<br /><br />
+
+---
+
+<br /><br />
+
 ## 📡 Ce qui se passe ensuite
 
 Quand tu pushes :
