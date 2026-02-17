@@ -71,9 +71,6 @@ Dans ton projet :
 
 ```bash
 git lfs track "*.uasset"
-git lfs track "*.umap"
-git lfs track "*.fbx"
-git lfs track "*.wav"
 ```
 
 Cela va créer/modifier automatiquement :
@@ -91,8 +88,14 @@ Cela va créer/modifier automatiquement :
 ## 💾 Commit de la configuration
 
 ```bash
+# pour la configure fls + gitattributes
 git add .gitattributes .lfsconfig
 git commit -m "Configure external LFS via Gitea"
+git push
+
+# puis pour les fichiers "*.uasset"
+git add .
+git commit -m "feat: add assets"
 git push
 ```
 
