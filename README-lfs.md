@@ -11,6 +11,7 @@ Git LFS doit être installé sur la machine.
 ```bash
 # 1. Ce rendre sur : https://git-lfs.com/
 # 2. Cliquer sur le boutton "Download"
+# 3. Installer le .exe télécharger précédemment
 ```
 
 **Mac**
