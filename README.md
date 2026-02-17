@@ -16,7 +16,11 @@ Cela permet :
 * de versionner des projets Unreal Engine (assets lourds)
 * de garder GitHub pour le développement
 
+<br /><br />
+
 ---
+
+<br /><br />
 
 # 🧱 Architecture
 
@@ -33,7 +37,11 @@ OVH Object Storage (S3)
 Gitea ne sert ici **que de passerelle LFS**.
 Le code reste sur GitHub.
 
+<br /><br />
+
 ---
+
+<br /><br />
 
 # 📦 Structure du dépôt
 
@@ -51,7 +59,11 @@ Il n’y a volontairement que 2 fichiers :
 
 Le namespace est créé automatiquement par Helm.
 
+<br /><br />
+
 ---
+
+<br /><br />
 
 # 🧰 Prérequis
 
@@ -71,7 +83,11 @@ letsencrypt-production
 gitea.crzgames.com → IP du LoadBalancer NginxIngressController
 ```
 
+<br /><br />
+
 ---
+
+<br /><br />
 
 # 🔐 1) Configurer le secret OVH S3
 
@@ -104,7 +120,11 @@ stringData:
 ⚠️ IMPORTANT
 Ne commit jamais les vraies clés dans un repo public.
 
+<br /><br />
+
 ---
+
+<br /><br />
 
 # 🚀 2) Installer Gitea avec Helm
 
@@ -131,7 +151,11 @@ Helm va automatiquement :
 * activer le serveur LFS
 * connecter le stockage LFS à OVH S3
 
+<br /><br />
+
 ---
+
+<br /><br />
 
 # 🌐 3) Vérifier que Gitea fonctionne
 
@@ -149,7 +173,11 @@ https://gitea.crzgames.com/api/healthz
 
 Une réponse HTTP 200 signifie que Gitea est opérationnel.
 
+<br /><br />
+
 ---
+
+<br /><br />
 
 # 🧠 4) Utilisation : Gitea uniquement pour le LFS
 
