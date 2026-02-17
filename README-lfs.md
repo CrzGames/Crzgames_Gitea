@@ -54,7 +54,7 @@ Avec :
 
 ```ini
 [lfs]
-url = https://gitea.crzgames.com/CrzGamesOrga/AetherRoyale-Client.git/info/lfs
+url = https://gitea.crzgames.com/CrzGamesOrga/AetherRoyale-GameClient.git/info/lfs
 ```
 
 Ce fichier indique à Git d’envoyer les fichiers LFS vers Gitea au lieu de GitHub.
@@ -226,25 +226,6 @@ OVH S3  -> stockage réel
 
 <br /><br />
 
-## ⚠️ Important pour les autres développeurs
-
-Chaque développeur doit faire une seule fois :
-
-```bash
-git lfs install
-```
-
-Sinon :
-
-* les assets Unreal ne seront pas téléchargés correctement
-* ils verront des fichiers texte au lieu des vrais fichiers
-
-<br /><br />
-
----
-
-<br /><br />
-
 ## 🔎 Vérifier que ça fonctionne
 
 ```bash
@@ -259,12 +240,11 @@ Si les `.uasset`, `.umap`, etc. apparaissent → LFS fonctionne correctement.
 
 <br /><br />
 
-## 💡 Si des assets ont déjà été commit AVANT LFS
-
-Il faut les migrer :
+## 📥 Cloner le projet (nouveau développeur)
 
 ```bash
-git lfs migrate import --include="*.uasset,*.umap,*.fbx,*.wav"
+git clone https://github.com/CrzGames/AetherRoyale-GameClient.git
+cd AetherRoyale-Client
+git lfs install
+git lfs pull
 ```
-
-Sinon ils resteront stockés directement dans GitHub.
