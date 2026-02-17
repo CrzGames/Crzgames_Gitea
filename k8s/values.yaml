@@ -1,0 +1,107 @@
+resources:
+  requests:
+    cpu: 25m
+    memory: 256Mi
+  limits:
+    cpu: 300m
+    memory: 768Mi
+
+postgresql:
+  primary:
+    resources:
+      requests:
+        cpu: 50m
+        memory: 256Mi
+      limits:
+        cpu: 300m
+        memory: 512Mi
+
+valkey:
+  master:
+    resources:
+      requests:
+        cpu: 25m
+        memory: 128Mi
+      limits:
+        cpu: 200m
+        memory: 256Mi
+
+ingress:
+  enabled: true
+  className: nginx
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"   # important pour gros pushes/LFS
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
+  hosts:
+    - host: gitea.crzgames.com
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - secretName: gitea-tls
+      hosts:
+        - gitea.crzgames.com
+
+service:
+  http:
+    type: ClusterIP
+    port: 3000
+  ssh:
+    type: ClusterIP
+    port: 22
+    # ⚠️ Ingress ne gère pas SSH.
+    # Si tu veux cloner en ssh depuis l'extérieur, passe en LoadBalancer/NodePort.
+
+# --- DB: désactive HA, active PostgreSQL simple ---
+postgresql-ha:
+  enabled: false
+postgresql:
+  enabled: true
+
+# --- Cache: désactive valkey cluster, active valkey standalone ---
+valkey-cluster:
+  enabled: false
+valkey:
+  enabled: true
+
+gitea:
+  config:
+    server:
+      DOMAIN: "gitea.crzgames.com"
+      ROOT_URL: "https://gitea.crzgames.com/"
+      PROTOCOL: "http"         # TLS terminé par l'ingress
+      HTTP_PORT: 3000
+
+      SSH_DOMAIN: "gitea.crzgames.com"
+      SSH_PORT: 22             # port public affiché dans l'UI
+      START_SSH_SERVER: true
+
+    security:
+      INSTALL_LOCK: true
+
+    lfs:
+      START_SERVER: true
+
+    storage:
+      STORAGE_TYPE: "minio"                 # Gitea utilise "minio" pour du S3-compatible
+      MINIO_ENDPOINT: "s3.de.io.cloud.ovh.net"
+      MINIO_BUCKET: "aetherroyale-s3"
+      MINIO_LOCATION: "de"
+      MINIO_USE_SSL: true
+      MINIO_INSECURE_SKIP_VERIFY: false
+      MINIO_BUCKET_LOOKUP_TYPE: "auto"
+      SERVE_DIRECT: true
+
+  additionalConfigFromEnvs:
+    - name: GITEA__STORAGE__MINIO_ACCESS_KEY_ID
+      valueFrom:
+        secretKeyRef:
+          name: gitea-ovh-s3
+          key: accessKey
+    - name: GITEA__STORAGE__MINIO_SECRET_ACCESS_KEY
+      valueFrom:
+        secretKeyRef:
+          name: gitea-ovh-s3
+          key: secretKey
